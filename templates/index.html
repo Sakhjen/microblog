@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Микроблог для всех!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Общий свободный микроблог</h1>
+    <br />
+    <h3>Пиши, что хочешь</h3>
+    <br />
+    {% for post in posts %}
+        <br />
+        {{ post }} <div><i>(Добавлено {{ post.date }})</i></div>
+        <br />
+        <hr width = "640">
+    {% endfor %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+</body>
+</html>
